@@ -103,7 +103,7 @@ while(True):
         break
 
     # If image taken reach 100, stop taking video
-    elif count>=30:
+    elif count>=50:
         print("Successfully Captured")
         break
 

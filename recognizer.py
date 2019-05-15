@@ -14,14 +14,15 @@ filename='filename';
 dict = {
             'item1': 1
 }
+result_list = []
 #font = cv2.InitFont(cv2.cv.CV_FONT_HERSHEY_SIMPLEX, 5, 1, 0, 1, 1)
 font = cv2.FONT_HERSHEY_SIMPLEX
 while True:
-    print('Started')
+    #print('Started')
     ret, img = cap.read();
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY);
     faces = face_cas.detectMultiScale(gray, 1.3, 7);
-    print(faces)
+    #print(faces)
     for (x,y,w,h) in faces:
         roi_gray = gray[y:y + h, x:x + w]
         cv2.rectangle(img, (x,y), (x+w, y+h), (255,0,0),2);
@@ -30,25 +31,28 @@ while True:
         if(conf < 50):
          if(id==1):
             print(True)
-            id='Suman Niroula'
+            id='Atithi Ghimire'
             if((str(id)) not in dict):
                 filename=xlwrite.output('attendance','class1',1,id,'yes');
                 dict[str(id)]=str(id);
                 
          elif(id==2):
-            id = 'Rohan'
+            print(True)
+            id = 'Kritika Shrestha'
             if ((str(id)) not in dict):
                 filename =xlwrite.output('attendance', 'class1', 2, id, 'yes');
                 dict[str(id)] = str(id);
 
          elif(id==3):
-            id = 'Raveen'
+            print(True)
+            id = 'Pramisha K.C'
             if ((str(id)) not in dict):
                 filename =xlwrite.output('attendance', 'class1', 3, id, 'yes');
                 dict[str(id)] = str(id);
 
          elif(id==4):
-            id = 'Sonu'
+            print(True)
+            id = 'Sudikshya Shrestha'
             if ((str(id)) not in dict):
                 filename =xlwrite.output('attendance', 'class1', 4, id, 'yes');
                 dict[str(id)] = str(id);
@@ -62,12 +66,12 @@ while True:
         #cv2.cv.PutText(cv2.cv.fromarray(img),str(id),(x,y+h),font,(0,0,255));
     cv2.imshow('frame',img);
     #cv2.imshow('gray',gray);
-    if flag == 10:
+    if flag == 50:
         playsound('transactionSound.mp3')
         print("Transaction Blocked")
         break;
-    if time.time()>start+period:
-        break;
+    # if time.time()>start+period:
+    #     break;
     if cv2.waitKey(100) & 0xFF == ord('q'):
         break;
 
